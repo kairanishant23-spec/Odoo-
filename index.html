@@ -1,1 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GlobeTrotter — Smart Travel Planning & Trip Management</title>
+  <meta name="description" content="GlobeTrotter is a modern, all-in-one smart travel planning and trip management platform. Plan multi-city journeys, build day-wise itineraries, track budgets, and discover global destinations." />
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
 
+  <!-- AUTH VIEW (Screen 1: Login & Screen 2: Register) -->
+  <div id="authView" class="auth-wrapper hidden">
+    <!-- Login Screen -->
+    <div id="loginScreen" class="auth-split-screen">
+      <div class="auth-visual-side">
+        <div class="auth-visual-overlay"></div>
+        <div class="auth-visual-content">
+          <div class="brand-logo-large">
+            <div class="brand-icon"><i data-lucide="compass"></i></div>
+            <span>Globe<span class="text-blue">Trotter</span></span>
+          </div>
+          <div class="auth-hero-copy">
+            <span class="auth-tag">SMART TRAVEL PLATFORM</span>
+            <h2>Plan less.<br><em>Explore more.</em></h2>
+            <p>From seamless multi-city itineraries to collaborative group budgets and hidden gem discoveries — all in one calm, powerful workspace.</p>
+          </div>
+          <div class="auth-stats-mini">
+            <div class="stat-bubble">
+              <i data-lucide="map-pin"></i>
+              <div>
+                <strong>140+</strong>
+                <span>Destinations</span>
+              </div>
+            </div>
+            <div class="stat-bubble">
+              <i data-lucide="users"></i>
+              <div>
+                <strong>45k+</strong>
+                <span>Active Travelers</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="auth-form-side">
+        <div class="auth-card">
+          <div class="auth-header">
+            <h3>Welcome back</h3>
+            <p>Sign in to continue your adventure</p>
+          </div>
+
+          <form id="loginForm" class="form-standard">
+            <div class="form-group">
+              <label for="loginEmail">Email or Username</label>
+              <div class="input-with-icon">
+                <i data-lucide="mail"></i>
+                <input type="text" id="loginEmail" placeholder="e.g. traveler@globetrotter.io" value="alex.rivera@globetrotter.io" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="label-with-action">
+                <label for="loginPassword">Password</label>
+                <a href="javascript:void(0)" class="link-small" id="forgotPasswordBtn">Forgot password?</a>
+              </div>
+              <div class="input-with-icon">
+                <i data-lucide="lock"></i>
+                <input type="password" id="loginPassword" placeholder="••••••••" value="password123" required />
+              </div>
+            </div>
+
+            <div class="form-row-checkbox">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="rememberMe" checked />
+                <span class="checkmark"></span>
+                <span>Remember this device</span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-lg">
+              <span>Sign In</span>
+              <i data-lucide="arrow-right"></i>
+            </button>
+
+            <div class="auth-divider">
+              <span>or continue with</span>
+            </div>
+
+            <button type="button" class="btn btn-outline btn-block social-btn" id="googleLoginBtn">
+              <svg class="google-icon" viewBox="0 0 24 24" width="18" height="18">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+              </svg>
+              <span>Continue with Google</span>
+            </button>
+          </form>
+
+          <div class="auth-footer">
+            <p>Don't have an account? <a href="javascript:void(0)" id="showRegisterBtn" class="link-bold">Create one now</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Registration Screen (Screen 2) -->
+    <div id="registerScreen" class="auth-split-screen hidden">
+      <div class="auth-visual-side register-bg">
+        <div class="auth-visual-overlay"></div>
+        <div class="auth-visual-content">
+          <div class="brand-logo-large">
+            <div class="brand-icon"><i data-lucide="compass"></i></div>
+            <span>Globe<span class="text-blue">Trotter</span></span>
+          </div>
+          <div class="auth-hero-copy">
+            <span class="auth-tag">JOIN THE COMMUNITY</span>
+            <h2>Your world.<br><em>Curated together.</em></h2>
+            <p>Join thousands of curious explorers who craft memorable journeys with intelligent day-plans, precise currency trackers, and local insider routes.</p>
+          </div>
+        </div>
+      </div>
+      <div class="auth-form-side register-side">
+        <div class="auth-card wide-card">
+          <div class="auth-header">
+            <h3>Create your GlobeTrotter profile</h3>
+            <p>Fill in your traveler details to customize your experience</p>
+          </div>
+
+          <form id="registerForm" class="form-standard">
+            <!-- Profile Avatar Picker -->
+            <div class="avatar-upload-section">
+              <div class="avatar-preview-box">
+                <img id="registerAvatarPreview" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=250&q=80" alt="Avatar preview" />
+                <button type="button" class="avatar-edit-trigger" id="avatarPickerBtn" title="Change avatar">
+                  <i data-lucide="camera"></i>
+                </button>
+              </div>
+              <div class="avatar-upload-info">
+                <span class="info-title">Profile Picture</span>
+                <span class="info-sub">Recommended: Square JPG or PNG, max 5MB</span>
+              </div>
+            </div>
+
+            <!-- Two-column grid -->
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="regFirstName">First Name</label>
+                <div class="input-with-icon">
+                  <i data-lucide="user"></i>
+                  <input type="text" id="regFirstName" placeholder="Alex" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="regLastName">Last Name</label>
+                <div class="input-with-icon">
+                  <i data-lucide="user"></i>
+                  <input type="text" id="regLastName" placeholder="Rivera" required />
+                </div>
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="regEmail">Email Address</label>
+                <div class="input-with-icon">
+                  <i data-lucide="mail"></i>
+                  <input type="email" id="regEmail" placeholder="alex.rivera@example.com" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="regPhone">Phone Number</label>
+                <div class="input-with-icon">
+                  <i data-lucide="phone"></i>
+                  <input type="tel" id="regPhone" placeholder="+1 (555) 342-8921" />
+                </div>
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="regCity">Home City</label>
+                <div class="input-with-icon">
+                  <i data-lucide="map-pin"></i>
+                  <input type="text" id="regCity" placeholder="San Francisco" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="regCountry">Country</label>
+                <div class="input-with-icon">
+                  <i data-lucide="globe"></i>
+                  <select id="regCountry" required>
+                    <option value="United States">United States</option>
+                    <option value="India">India</option>
+                    <option value="United Kingdom">United Kingdom</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Germany">Germany</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Japan">Japan</option>
+                    <option value="France">France</option>
+                    <option value="Spain">Spain</option>
+                    <option value="Singapore">Singapore</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="regBio">Travel Style & Bio <span class="text-muted">(Optional)</span></label>
+              <textarea id="regBio" rows="2" placeholder="Tell us what excites you (e.g., street food hunter, alpine trekker, museum collector)..."></textarea>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="regPassword">Password</label>
+                <div class="input-with-icon">
+                  <i data-lucide="lock"></i>
+                  <input type="password" id="regPassword" placeholder="At least 8 characters" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="regConfirmPassword">Confirm Password</label>
+                <div class="input-with-icon">
+                  <i data-lucide="lock"></i>
+                  <input type="password" id="regConfirmPassword" placeholder="Repeat password" required />
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row-checkbox">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="regTerms" required />
+                <span class="checkmark"></span>
+                <span>I agree to GlobeTrotter's <a href="javascript:void(0)" class="link-inline">Terms of Service</a> and <a href="javascript:void(0)" class="link-inline">Privacy Policy</a></span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-lg">
+              <span>Create Account</span>
+              <i data-lucide="check-circle-2"></i>
+            </button>
+          </form>
+
+          <div class="auth-footer">
+            <p>Already have an account? <a href="javascript:void(0)" id="showLoginBtn" class="link-bold">Sign In here</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN APP SHELL -->
+  <div id="appShell" class="app-layout">
+    
+    <!-- LEFT SIDEBAR -->
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <a href="javascript:void(0)" class="brand-link" data-nav="home">
+          <div class="brand-icon"><i data-lucide="compass"></i></div>
+          <span class="brand-text">Globe<span>Trotter</span></span>
+        </a>
+        <button id="collapseSidebarBtn" class="icon-toggle-btn" title="Toggle Sidebar">
+          <i data-lucide="panel-left-close"></i>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">MAIN MENU</div>
+        <ul class="nav-list">
+          <li>
+            <a href="javascript:void(0)" class="nav-item active" data-nav="home">
+              <i data-lucide="layout-dashboard"></i>
+              <span>Home</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)" class="nav-item" data-nav="trips">
+              <i data-lucide="briefcase"></i>
+              <span>My Trips</span>
+              <span class="badge badge-pill badge-primary-subtle" id="navTripCount">4</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)" class="nav-item" data-nav="create">
+              <i data-lucide="plus-circle"></i>
+              <span>Create Trip</span>
+              <span class="badge badge-pill badge-accent">New</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)" class="nav-item" data-nav="itinerary">
+              <i data-lucide="map"></i>
+              <span>Itinerary Builder</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)" class="nav-item" data-nav="budget">
+              <i data-lucide="wallet"></i>
+              <span>Budget & Expenses</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)" class="nav-item" data-nav="explore">
+              <i data-lucide="compass"></i>
+              <span>Explore Cities</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)" class="nav-item" data-nav="community">
+              <i data-lucide="users-round"></i>
+              <span>Community Trips</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)" class="nav-item" data-nav="calendar">
+              <i data-lucide="calendar"></i>
+              <span>Trip Calendar</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)" class="nav-item" data-nav="analytics">
+              <i data-lucide="bar-chart-3"></i>
+              <span>Travel Insights</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="nav-section-label">ACCOUNT</div>
+        <ul class="nav-list">
+          <li>
+            <a href="javascript:void(0)" class="nav-item" data-nav="profile">
+              <i data-lucide="user-check"></i>
+              <span>Profile</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)" class="nav-item" data-nav="settings">
+              <i data-lucide="settings"></i>
+              <span>Settings</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Bottom Profile & Logout -->
+      <div class="sidebar-footer">
+        <div class="sidebar-user-card" data-nav="profile">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="User avatar" class="user-avatar-sm" id="sidebarAvatar" />
+          <div class="user-info-text">
+            <strong id="sidebarUserName">Alex Rivera</strong>
+            <span id="sidebarUserRole">Pro Traveler</span>
+          </div>
+        </div>
+        <button id="sidebarLogoutBtn" class="logout-btn" title="Sign out / Switch account">
+          <i data-lucide="log-out"></i>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Sidebar Overlay for Mobile -->
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <div class="main-wrapper">
+      
+      <!-- TOP NAVIGATION BAR -->
+      <header class="top-nav">
+        <div class="top-nav-left">
+          <button id="mobileMenuBtn" class="mobile-hamburger-btn" aria-label="Toggle navigation menu">
+            <i data-lucide="menu"></i>
+          </button>
+          
+          <!-- Global Search Bar -->
+          <div class="global-search-container">
+            <i data-lucide="search" class="search-lead-icon"></i>
+            <input type="text" id="globalSearchInput" placeholder="Search cities, trips, activities, or tags (Ctrl+K)..." autocomplete="off" />
+            <button class="search-action-btn" id="globalSearchBtn" title="Execute search">
+              <span>Search</span>
+            </button>
+            <button class="filter-action-btn" id="globalFilterToggleBtn" title="Filter search results">
+              <i data-lucide="sliders-horizontal"></i>
+              <span>Filters</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="top-nav-right">
+          <!-- Quick Action: Quick Trip Button -->
+          <button class="btn btn-primary btn-sm quick-plan-btn" data-nav="create">
+            <i data-lucide="plus"></i>
+            <span>Plan Trip</span>
+          </button>
+
+          <!-- Notification Dropdown -->
+          <div class="nav-dropdown-wrapper">
+            <button class="icon-circle-btn notification-btn" id="notifBellBtn" aria-label="View notifications">
+              <i data-lucide="bell"></i>
+              <span class="notification-badge">3</span>
+            </button>
+            <div id="notifDropdown" class="dropdown-panel notif-panel hidden">
+              <div class="dropdown-header">
+                <strong>Notifications</strong>
+                <span class="badge badge-subtle">3 New</span>
+              </div>
+              <ul class="notif-list">
+                <li class="notif-item unread">
+                  <div class="notif-icon-box bg-blue"><i data-lucide="plane"></i></div>
+                  <div class="notif-body">
+                    <p><strong>Japan Adventure</strong> starts in 14 days!</p>
+                    <small>2 hours ago</small>
+                  </div>
+                </li>
+                <li class="notif-item unread">
+                  <div class="notif-icon-box bg-green"><i data-lucide="dollar-sign"></i></div>
+                  <div class="notif-body">
+                    <p>Euro exchange rate updated for Paris trip.</p>
+                    <small>5 hours ago</small>
+                  </div>
+                </li>
+                <li class="notif-item">
+                  <div class="notif-icon-box bg-orange"><i data-lucide="heart"></i></div>
+                  <div class="notif-body">
+                    <p><strong>Elena Vance</strong> liked your "Amalfi Coast" itinerary.</p>
+                    <small>1 day ago</small>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- User Menu Avatar Dropdown -->
+          <div class="nav-dropdown-wrapper">
+            <button class="user-menu-trigger" id="userMenuBtn" aria-label="User profile options">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Avatar" class="top-nav-avatar" id="topNavAvatar" />
+              <span class="top-nav-name" id="topNavName">Alex</span>
+              <i data-lucide="chevron-down" class="chevron-sm"></i>
+            </button>
+            <div id="userDropdown" class="dropdown-panel user-panel hidden">
+              <div class="dropdown-user-header">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Avatar" class="avatar-lg" />
+                <div>
+                  <strong id="dropdownName">Alex Rivera</strong>
+                  <small id="dropdownEmail">alex.rivera@globetrotter.io</small>
+                </div>
+              </div>
+              <ul class="dropdown-menu-list">
+                <li><a href="javascript:void(0)" data-nav="profile"><i data-lucide="user"></i> My Profile</a></li>
+                <li><a href="javascript:void(0)" data-nav="trips"><i data-lucide="briefcase"></i> My Trips</a></li>
+                <li><a href="javascript:void(0)" data-nav="analytics"><i data-lucide="pie-chart"></i> Travel Stats</a></li>
+                <li><a href="javascript:void(0)" data-nav="settings"><i data-lucide="settings"></i> Account Settings</a></li>
+                <li class="divider"></li>
+                <li><a href="javascript:void(0)" id="topNavLogoutBtn" class="text-danger"><i data-lucide="log-out"></i> Sign Out</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- APPLICATION PAGES VIEWPORT -->
+      <main class="content-viewport" id="contentViewport">
+
+        <!-- ====================================================
+             SCREEN 3 — HOME DASHBOARD
+             ==================================================== -->
+        <section id="screenHome" class="screen-view active">
+          <!-- Hero Section with Booking/Search style bar -->
+          <div class="home-hero-card">
+            <div class="hero-bg-overlay"></div>
+            <div class="hero-content">
+              <div class="hero-badge">
+                <i data-lucide="sparkles"></i>
+                <span>AI-Powered Multi-City Trip Planner</span>
+              </div>
+              <h1 class="hero-title">Where are you going next?</h1>
+              <p class="hero-subtitle">Design multi-destination routes, balance your travel budget in real-time, and discover handpicked experiences.</p>
+
+              <!-- Quick Trip Planning Search Form (RedBus-inspired clean, tactile flow) -->
+              <div class="quick-planner-card">
+                <form id="heroPlannerForm" class="planner-grid">
+                  <div class="planner-input-block">
+                    <label><i data-lucide="map-pin"></i> Destination</label>
+                    <input type="text" id="heroDestinationInput" placeholder="e.g. Tokyo, Paris, Manali..." value="Tokyo, Japan" />
+                  </div>
+
+                  <div class="planner-input-block">
+                    <label><i data-lucide="calendar"></i> Start Date</label>
+                    <input type="date" id="heroStartDateInput" value="2026-10-10" />
+                  </div>
