@@ -6,7 +6,7 @@ It combines a modern frontend with a robust backend to help users create customi
 explore destinations, manage budgets, and share travel plans with friends. 
 Repository: This Odoo–main repository contains the backend infrastructure and frontend entry
 point for the GlobeTrotter travel planning application. 
-🎯 Key Features 
+ 🎯 Key Features 
 ✅ Authentication - User login and signup with secure credential management
 ✅ Trip Management - Create, edit, and delete travel plans
 ✅ Itinerary Builder - Add multiple cities, dates, and activities
@@ -15,7 +15,7 @@ point for the GlobeTrotter travel planning application.
 ✅ Trip Visualization - Calendar and timeline views of itineraries
 ✅ Sharing & Collaboration - Share public itineraries with others
 ✅ Payment Integration - Stripe integration for secure transactions 
-📁 Project Structure 
+ 📁 Project Structure 
 Odoo--main/
 ├── backends/ # Backend API Server
 │ ├── app.js # Express server setup
@@ -38,7 +38,7 @@ Odoo--main/
 ├── index.html # Frontend entry point
 └── style.css # Styling for the application
 
-🛠️ Technology Stack 
+ 🛠️ Technology Stack 
 Frontend 
 HTML5 - Markup structure
 CSS3 - Styling and responsive design
@@ -52,7 +52,7 @@ Development Tools
 Nodemon - Auto-restart during development
 UUID - Unique identifier generation
 Dotenv - Environment variable management 
-🚀 Quick Start 
+ 🚀 Quick Start 
 Prerequisites 
 Node.js v14+ installed
 MongoDB account (Atlas or local instance)
@@ -72,13 +72,13 @@ STRIPE_SECRET_KEY=sk_test_your_stripe_key PORT=3020 NODE_ENV=development
 4. Start the Backend Server 
 # Development mode (with auto-reload)
 npm run dev
-# Production mode
+ # Production mode
 npm start
 
 The server will run on http://localhost:3020 
 5. Open Frontend 
 Open index.html in your browser or serve it via a local server. 
-📊 Database Models 
+ 📊 Database Models 
 1. Customer Model 
 Stores user profile information javascript { name: String, email: String (unique), password: String
 (hashed), profilePhoto: String, preferences: Object, createdAt: Date } 
@@ -96,7 +96,7 @@ costPerDay: Number, availableDates: [Date] }
 Stores activity and service information javascript { serviceName: String, type: String (e.g.,
 "Activity", "Hotel", "Food"), city: String, description: String, cost: Number, duration: Number,
 rating: Number } 
-🔌 API Endpoints 
+ 🔌 API Endpoints 
 AuthenticationPOST /api/auth/signup - Register new user
 POST /api/auth/login - User login
 POST /api/auth/logout - User logout 
@@ -114,7 +114,7 @@ GET /api/busservice - Get available services/activities
 GET /api/busservice/search?type=activity - Search activities 
 Payments 
 POST /api/stripe-payments - Process payment via Stripe 
-🎨 Frontend Screens (To Implement) 
+ 🎨 Frontend Screens (To Implement) 
 Login/Signup - Authentication page
 Dashboard - Home screen with trip overview
 Create Trip - Form to start new trip
@@ -128,11 +128,11 @@ Timeline/Calendar - Visual schedule
 Shared Itinerary - Public sharing page
 User Settings - Profile management
 Admin Dashboard - Analytics (optional) 
-🔐 Security Considerations 
+ 🔐 Security Considerations 
 ⚠️ Important Security Notes: - The Stripe API key in app.js is a test key (expires Sept 1, 2026) -
 Replace with production key before deployment - MongoDB credentials are hardcoded - Move to
 environment variables - Implement authentication middleware for protected routes - Add input
-validation and sanitization - Use HTTPS in production - Hash passwords using bcrypt📝 Modification Guide 
+validation and sanitization - Use HTTPS in production - Hash passwords using bcrypt 📝 Modification Guide 
 To Adapt for GlobeTrotter: 
 Update Models - Rename “Bus” to “Transport” and adapt fields for travel
 Rename Routes - Change bus-specific endpoints to travel-planning endpoints
@@ -140,18 +140,18 @@ Update Controllers - Modify business logic for trip management
 Frontend Development - Build the 13 screens from GlobeTrotter specifications
 Database Schema - Ensure support for cities, activities, itineraries, budgets
 Payment Integration - Keep Stripe but adapt for trip/activity payments 
-🧪 Testing 
+ 🧪 Testing 
 Currently, no automated tests are configured. To add tests: 
 npm install --save-dev jest supertest
 
 Then create test files in a __tests__/ directory. 
-📈 Development Workflow 
+ 📈 Development Workflow 
 Create a new branch for your feature bash git checkout -b feature/your-feature 
 Make changes to models, routes, or controllers
 Test your API using Postman or similar tool
 Commit with clear messages bash git commit -m "feat: add trip budget calculation" 
 Push to repository bash git push origin feature/your-feature 
-🐛 Troubleshooting 
+ 🐛 Troubleshooting 
 MongoDB Connection Fails 
 Verify connection string in config.env
 Check MongoDB Atlas IP whitelist
@@ -165,7 +165,7 @@ Or change PORT in config.env
 CORS Issues 
 Ensure frontend origin is allowed in CORS config
 Check if requests include proper headers 
-📚 Resources 
+ 📚 Resources 
 GlobeTrotter Specifications
 Express.js Documentation
 MongoDB Mongoose Guide
