@@ -1,11 +1,18 @@
 GlobeTrotter - Travel Planning Application 
+
+
 🌍 A personalized, intelligent platform for planning multi-city travel experiences 
 📋 Project Overview 
+
+
 GlobeTrotter is a hackathon project aimed at creating a comprehensive travel planning application.
 It combines a modern frontend with a robust backend to help users create customized itineraries,
 explore destinations, manage budgets, and share travel plans with friends. 
 Repository: This Odoo–main repository contains the backend infrastructure and frontend entry
 point for the GlobeTrotter travel planning application. 
+
+
+
  🎯 Key Features 
 ✅ Authentication - User login and signup with secure credential management
 ✅ Trip Management - Create, edit, and delete travel plans
@@ -15,7 +22,10 @@ point for the GlobeTrotter travel planning application.
 ✅ Trip Visualization - Calendar and timeline views of itineraries
 ✅ Sharing & Collaboration - Share public itineraries with others
 ✅ Payment Integration - Stripe integration for secure transactions 
+
+
  📁 Project Structure 
+
 Odoo--main/
 ├── backends/ # Backend API Server
 │ ├── app.js # Express server setup
@@ -52,6 +62,8 @@ Development Tools
 Nodemon - Auto-restart during development
 UUID - Unique identifier generation
 Dotenv - Environment variable management 
+
+
  🚀 Quick Start 
 Prerequisites 
 Node.js v14+ installed
@@ -140,6 +152,8 @@ Update Controllers - Modify business logic for trip management
 Frontend Development - Build the 13 screens from GlobeTrotter specifications
 Database Schema - Ensure support for cities, activities, itineraries, budgets
 Payment Integration - Keep Stripe but adapt for trip/activity payments 
+
+
  🧪 Testing 
 Currently, no automated tests are configured. To add tests: 
 npm install --save-dev jest supertest
@@ -165,6 +179,9 @@ Or change PORT in config.env
 CORS Issues 
 Ensure frontend origin is allowed in CORS config
 Check if requests include proper headers 
+
+
+
  📚 Resources 
 GlobeTrotter Specifications
 Express.js Documentation
