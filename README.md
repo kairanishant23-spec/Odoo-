@@ -14,6 +14,7 @@ point for the GlobeTrotter travel planning application.
 
 
  🎯 Key Features 
+
 ✅ Authentication - User login and signup with secure credential management
 ✅ Trip Management - Create, edit, and delete travel plans
 ✅ Itinerary Builder - Add multiple cities, dates, and activities
@@ -49,6 +50,7 @@ Odoo--main/
 └── style.css # Styling for the application
 
  🛠️ Technology Stack 
+
 Frontend 
 HTML5 - Markup structure
 CSS3 - Styling and responsive design
@@ -65,6 +67,7 @@ Dotenv - Environment variable management
 
 
  🚀 Quick Start 
+
 Prerequisites 
 Node.js v14+ installed
 MongoDB account (Atlas or local instance)
@@ -155,17 +158,21 @@ Payment Integration - Keep Stripe but adapt for trip/activity payments
 
 
  🧪 Testing 
+
 Currently, no automated tests are configured. To add tests: 
 npm install --save-dev jest supertest
 
 Then create test files in a __tests__/ directory. 
  📈 Development Workflow 
+
 Create a new branch for your feature bash git checkout -b feature/your-feature 
 Make changes to models, routes, or controllers
 Test your API using Postman or similar tool
 Commit with clear messages bash git commit -m "feat: add trip budget calculation" 
 Push to repository bash git push origin feature/your-feature 
+
  🐛 Troubleshooting 
+
 MongoDB Connection Fails 
 Verify connection string in config.env
 Check MongoDB Atlas IP whitelist
@@ -183,6 +190,7 @@ Check if requests include proper headers
 
 
  📚 Resources 
+
 GlobeTrotter Specifications
 Express.js Documentation
 MongoDB Mongoose Guide
