@@ -16,27 +16,34 @@ const customerRoutes = require("./routes/customer");
 const routeRoutes = require("./routes/route");
 
 app.post("/v1/api/stripe-payments", async (req, res) => {
-  const { product, token } = req.body;
-  console.log("PRODUCT", product);
-  console.log("PRICE", product.price);
-  const idempontencyKey = uuidv4();
-  return stripe.customers
-    .create({
+  try {
+    const { product, token } = req.body;
+    console.log("PRODUCT", product);
+    console.log("PRICE", product.price);
+    const idempotencyKey = uuidv4(); // Corrected spelling
+
+    const customer = await stripe.customers.create({
       email: token.email,
       source: token.id,
-    })
-    .then((customer) => {
-      stripe.charges.create(
-        {
-          amount: product.price * 100,
-          currency: "inr",
-          customer: customer.id,
-          receipt_email: token.email,
-          description: `Purchase of ${product.name}`,
-        },
-        { idempontencyKey }
-      );
-    })
+    });
+
+    const charge = await stripe.charges.create(
+      {
+        amount: product.price * 100,
+        currency: "inr",
+        customer: customer.id,
+        receipt_email: token.email,
+        description: `Purchase of ${product.name}`,
+      },
+      { idempotencyKey }
+    );
+
+    res.status(200).json(charge);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message }); // Correctly sends an error instead of hanging
+  }
+});
     .then((result) => res.status(200).json(result))
     .catch((err) => console.log(err));
 });
@@ -65,18 +72,11 @@ const connect = () => {
 
   return mongoose.connect(
 "mongodb+srv://kairanishant23_db_user:NIshnat123@himsaru.sh5vmta.mongodb.net/himsaru?authSource=admin&appName=himsaru",
-    {
-      useCreateIndex: true,
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useFindAndModify: false,
-    }
-  );
-};
+    );
 
 
 const port = process.env.PORT || 3020;
-let host = process.env.HOST;
+const host = process.env.HOST || "0.0.0.0"; // Fallback to bind to all network addresses
 
 const start = async () => {
   await connect().then(()=>console.log("Database connected")).catch((err)=>console.log(err));
