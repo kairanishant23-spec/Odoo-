@@ -499,3 +499,1589 @@
                     <label><i data-lucide="calendar"></i> Start Date</label>
                     <input type="date" id="heroStartDateInput" value="2026-10-10" />
                   </div>
+                  <div class="planner-input-block">
+                    <label><i data-lucide="calendar-check"></i> End Date</label>
+                    <input type="date" id="heroEndDateInput" value="2026-10-22" />
+                  </div>
+
+                  <div class="planner-input-block">
+                    <label><i data-lucide="users"></i> Travelers</label>
+                    <select id="heroTravelersInput">
+                      <option value="1">1 Traveler (Solo)</option>
+                      <option value="2" selected>2 Travelers (Couple)</option>
+                      <option value="3">3-4 Travelers (Friends)</option>
+                      <option value="5">5+ (Family/Group)</option>
+                    </select>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary btn-search-cta">
+                    <i data-lucide="search"></i>
+                    <span>Start Planning</span>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Stats Highlights -->
+          <div class="dashboard-kpis-bar">
+            <div class="kpi-mini-card">
+              <div class="kpi-mini-icon bg-blue-light"><i data-lucide="map"></i></div>
+              <div>
+                <strong id="homeStatUpcoming">2 Trips</strong>
+                <span>Upcoming</span>
+              </div>
+            </div>
+            <div class="kpi-mini-card">
+              <div class="kpi-mini-icon bg-green-light"><i data-lucide="compass"></i></div>
+              <div>
+                <strong id="homeStatVisited">18 Countries</strong>
+                <span>Explored</span>
+              </div>
+            </div>
+            <div class="kpi-mini-card">
+              <div class="kpi-mini-icon bg-orange-light"><i data-lucide="wallet"></i></div>
+              <div>
+                <strong id="homeStatBudget">$4,200</strong>
+                <span>Active Budget</span>
+              </div>
+            </div>
+            <div class="kpi-mini-card">
+              <div class="kpi-mini-icon bg-purple-light"><i data-lucide="heart"></i></div>
+              <div>
+                <strong id="homeStatSaved">14 Places</strong>
+                <span>Saved to Wishlist</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Top Destinations Section -->
+          <div class="section-block">
+            <div class="section-heading-row">
+              <div>
+                <h2 class="section-title">Top Destinations</h2>
+                <p class="section-desc">Handpicked cities with high traveler ratings and curated itineraries.</p>
+              </div>
+              <button class="btn btn-outline btn-sm" data-nav="explore">
+                <span>View All 24+ Cities</span>
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+
+            <div class="destinations-grid" id="homeDestinationsGrid">
+              <!-- Rendered dynamically by script.js -->
+            </div>
+          </div>
+
+          <!-- Your Upcoming Trips Section -->
+          <div class="section-block">
+            <div class="section-heading-row">
+              <div>
+                <h2 class="section-title">Your Upcoming Trips</h2>
+                <p class="section-desc">Keep track of your approaching adventures and ready-to-go itineraries.</p>
+              </div>
+              <button class="btn btn-primary btn-sm" data-nav="create">
+                <i data-lucide="plus"></i>
+                <span>New Trip</span>
+              </button>
+            </div>
+
+            <div class="trips-showcase-grid" id="homeUpcomingTripsGrid">
+              <!-- Rendered dynamically by script.js -->
+            </div>
+          </div>
+
+          <!-- Recent Completed Trips Section -->
+          <div class="section-block">
+            <div class="section-heading-row">
+              <div>
+                <h2 class="section-title">Recent Trips & Memories</h2>
+                <p class="section-desc">Relive your past journeys, reviewed expenses, and photo stories.</p>
+              </div>
+              <button class="btn btn-ghost btn-sm" data-nav="trips">
+                <span>View Full Travel Library</span>
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+
+            <div class="trips-showcase-grid" id="homeRecentTripsGrid">
+              <!-- Rendered dynamically by script.js -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ====================================================
+             SCREEN 4 — CREATE NEW TRIP
+             ==================================================== -->
+        <section id="screenCreate" class="screen-view">
+          <div class="page-title-banner">
+            <div class="page-title-content">
+              <span class="page-eyebrow"><i data-lucide="sparkles"></i> TRIP WIZARD</span>
+              <h1>Create a New Journey</h1>
+              <p>Follow our structured 4-step planner to build your route, add multi-city stops, and dial in your travel vibe.</p>
+            </div>
+            <button class="btn btn-outline" data-nav="home">
+              <i data-lucide="x"></i>
+              <span>Cancel</span>
+            </button>
+          </div>
+
+          <!-- Multi-Step Progress Header -->
+          <div class="wizard-progress-card">
+            <div class="wizard-steps-indicator">
+              <div class="wizard-step-node active" data-step="1">
+                <div class="node-circle">1</div>
+                <div class="node-text">
+                  <strong>Basic Details</strong>
+                  <small>Dates & Group</small>
+                </div>
+              </div>
+              <div class="wizard-step-line" id="wizardLine1"></div>
+              
+              <div class="wizard-step-node" data-step="2">
+                <div class="node-circle">2</div>
+                <div class="node-text">
+                  <strong>Destinations</strong>
+                  <small>Route & Cities</small>
+                </div>
+              </div>
+              <div class="wizard-step-line" id="wizardLine2"></div>
+              
+              <div class="wizard-step-node" data-step="3">
+                <div class="node-circle">3</div>
+                <div class="node-text">
+                  <strong>Preferences</strong>
+                  <small>Styles & Interests</small>
+                </div>
+              </div>
+              <div class="wizard-step-line" id="wizardLine3"></div>
+              
+              <div class="wizard-step-node" data-step="4">
+                <div class="node-circle">4</div>
+                <div class="node-text">
+                  <strong>Review & Launch</strong>
+                  <small>Summary</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Multi-step Form Card -->
+          <div class="wizard-content-layout">
+            <div class="wizard-form-container">
+              
+              <!-- STEP 1: Basic Details -->
+              <div class="wizard-step-panel active" id="wizardStep1">
+                <div class="step-panel-header">
+                  <h3>Step 1: Basic Trip Details</h3>
+                  <p>Give your trip a memorable title and set your target travel window.</p>
+                </div>
+
+                <div class="form-standard">
+                  <div class="form-group">
+                    <label for="newTripName">Trip Name <span class="required">*</span></label>
+                    <div class="input-with-icon">
+                      <i data-lucide="compass"></i>
+                      <input type="text" id="newTripName" placeholder="e.g. Autumn in Japan, Golden Triangle Expedition" value="Japan Autumn Odyssey 2026" required />
+                    </div>
+                  </div>
+
+                  <div class="form-grid-2">
+                    <div class="form-group">
+                      <label for="newTripStart">Start Date <span class="required">*</span></label>
+                      <div class="input-with-icon">
+                        <i data-lucide="calendar"></i>
+                        <input type="date" id="newTripStart" value="2026-10-10" required />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="newTripEnd">End Date <span class="required">*</span></label>
+                      <div class="input-with-icon">
+                        <i data-lucide="calendar-check"></i>
+                        <input type="date" id="newTripEnd" value="2026-10-22" required />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-grid-2">
+                    <div class="form-group">
+                      <label for="newTripTravelers">Number of Travelers</label>
+                      <div class="input-with-icon">
+                        <i data-lucide="users"></i>
+                        <input type="number" id="newTripTravelers" min="1" max="50" value="2" />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="newTripBudget">Estimated Total Budget ($)</label>
+                      <div class="input-with-icon">
+                        <i data-lucide="dollar-sign"></i>
+                        <input type="number" id="newTripBudget" min="0" step="50" value="3800" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Travel Type</label>
+                    <div class="chips-radio-group" id="travelTypeGroup">
+                      <button type="button" class="chip-btn" data-value="Solo"><i data-lucide="user"></i> Solo</button>
+                      <button type="button" class="chip-btn active" data-value="Couple"><i data-lucide="heart"></i> Couple</button>
+                      <button type="button" class="chip-btn" data-value="Friends"><i data-lucide="users"></i> Friends</button>
+                      <button type="button" class="chip-btn" data-value="Family"><i data-lucide="home"></i> Family</button>
+                      <button type="button" class="chip-btn" data-value="Business"><i data-lucide="briefcase"></i> Business</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="wizard-actions">
+                  <div></div>
+                  <button type="button" class="btn btn-primary" id="wizardNext1">
+                    <span>Continue to Destinations</span>
+                    <i data-lucide="arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- STEP 2: Add Destinations -->
+              <div class="wizard-step-panel" id="wizardStep2">
+                <div class="step-panel-header">
+                  <h3>Step 2: Add Multi-City Route</h3>
+                  <p>Define your destination order. You can easily add, delete, and reorder cities.</p>
+                </div>
+
+                <!-- City sequence builder -->
+                <div class="destinations-route-box">
+                  <div class="route-header">
+                    <span>Planned Stop Sequence</span>
+                    <small>Drag or use arrows to change sequence</small>
+                  </div>
+                  
+                  <div class="cities-sortable-list" id="wizardCitiesList">
+                    <!-- City Items will be rendered here dynamically -->
+                  </div>
+
+                  <!-- Add city input bar -->
+                  <div class="add-city-inline">
+                    <div class="input-with-icon flex-1">
+                      <i data-lucide="plus-circle"></i>
+                      <input type="text" id="newCityInput" placeholder="Add another city (e.g. Kyoto, Agra, Florence)..." />
+                    </div>
+                    <button type="button" class="btn btn-outline" id="addCityBtn">
+                      <i data-lucide="plus"></i>
+                      <span>Add City</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Recommended Quick Add Cities -->
+                <div class="recommended-cities-section">
+                  <label class="section-sublabel">Popular suggested stops for this region:</label>
+                  <div class="quick-city-chips" id="quickAddCityChips">
+                    <button type="button" class="quick-chip" data-city="Tokyo, Japan">＋ Tokyo</button>
+                    <button type="button" class="quick-chip" data-city="Kyoto, Japan">＋ Kyoto</button>
+                    <button type="button" class="quick-chip" data-city="Osaka, Japan">＋ Osaka</button>
+                    <button type="button" class="quick-chip" data-city="Hakone, Japan">＋ Hakone</button>
+                    <button type="button" class="quick-chip" data-city="Nara, Japan">＋ Nara</button>
+                    <button type="button" class="quick-chip" data-city="Paris, France">＋ Paris</button>
+                    <button type="button" class="quick-chip" data-city="Rome, Italy">＋ Rome</button>
+                  </div>
+                </div>
+
+                <div class="wizard-actions">
+                  <button type="button" class="btn btn-outline" id="wizardBack2">
+                    <i data-lucide="arrow-left"></i>
+                    <span>Back</span>
+                  </button>
+                  <button type="button" class="btn btn-primary" id="wizardNext2">
+                    <span>Continue to Preferences</span>
+                    <i data-lucide="arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- STEP 3: Preferences -->
+              <div class="wizard-step-panel" id="wizardStep3">
+                <div class="step-panel-header">
+                  <h3>Step 3: Travel Preferences & Interests</h3>
+                  <p>Choose the vibes and activity categories you want GlobeTrotter to highlight in your itinerary.</p>
+                </div>
+
+                <div class="interests-grid" id="wizardInterestsGrid">
+                  <div class="interest-card active" data-interest="Adventure">
+                    <div class="interest-icon"><i data-lucide="mountain"></i></div>
+                    <strong>Adventure</strong>
+                    <p>Hiking, outdoors, peaks & thrills</p>
+                  </div>
+                  <div class="interest-card active" data-interest="Food">
+                    <div class="interest-icon"><i data-lucide="utensils"></i></div>
+                    <strong>Food & Culinary</strong>
+                    <p>Street markets, local eats & fine dining</p>
+                  </div>
+                  <div class="interest-card active" data-interest="Nature">
+                    <div class="interest-icon"><i data-lucide="trees"></i></div>
+                    <strong>Nature & Scenic</strong>
+                    <p>Gardens, waterfalls & coastlines</p>
+                  </div>
+                  <div class="interest-card active" data-interest="History">
+                    <div class="interest-icon"><i data-lucide="landmark"></i></div>
+                    <strong>History & Culture</strong>
+                    <p>Temples, museums & architecture</p>
+                  </div>
+                  <div class="interest-card" data-interest="Shopping">
+                    <div class="interest-icon"><i data-lucide="shopping-bag"></i></div>
+                    <strong>Shopping & Boutiques</strong>
+                    <p>Souvenirs, crafts & fashion districts</p>
+                  </div>
+                  <div class="interest-card" data-interest="Nightlife">
+                    <div class="interest-icon"><i data-lucide="sparkles"></i></div>
+                    <strong>Nightlife & Social</strong>
+                    <p>Rooftop lounges, bars & vibrant streets</p>
+                  </div>
+                  <div class="interest-card active" data-interest="Relaxation">
+                    <div class="interest-icon"><i data-lucide="sun-medium"></i></div>
+                    <strong>Relaxation & Wellness</strong>
+                    <p>Onsens, thermal spas & chill cafes</p>
+                  </div>
+                  <div class="interest-card" data-interest="Photography">
+                    <div class="interest-icon"><i data-lucide="camera"></i></div>
+                    <strong>Photography Spots</strong>
+                    <p>Golden hour vistas & hidden angles</p>
+                  </div>
+                </div>
+
+                <div class="wizard-actions">
+                  <button type="button" class="btn btn-outline" id="wizardBack3">
+                    <i data-lucide="arrow-left"></i>
+                    <span>Back</span>
+                  </button>
+                  <button type="button" class="btn btn-primary" id="wizardNext3">
+                    <span>Review Trip Summary</span>
+                    <i data-lucide="arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- STEP 4: Review & Finalize -->
+              <div class="wizard-step-panel" id="wizardStep4">
+                <div class="step-panel-header">
+                  <h3>Step 4: Review & Create</h3>
+                  <p>Confirm your itinerary parameters before generating day-by-day schedules.</p>
+                </div>
+
+                <div class="review-summary-card">
+                  <div class="review-top-banner">
+                    <div>
+                      <span class="badge badge-accent">READY TO LAUNCH</span>
+                      <h2 id="reviewTripTitle">Japan Autumn Odyssey 2026</h2>
+                      <p id="reviewTripDates"><i data-lucide="calendar"></i> Oct 10, 2026 – Oct 22, 2026 (12 Days)</p>
+                    </div>
+                    <div class="review-budget-tag">
+                      <small>Target Budget</small>
+                      <strong id="reviewTripBudget">$3,800</strong>
+                    </div>
+                  </div>
+
+                  <div class="review-details-grid">
+                    <div class="review-detail-box">
+                      <span class="detail-label"><i data-lucide="users"></i> Travelers</span>
+                      <strong id="reviewTripTravelers">2 Travelers (Couple)</strong>
+                    </div>
+                    <div class="review-detail-box">
+                      <span class="detail-label"><i data-lucide="map-pin"></i> Route Sequence</span>
+                      <strong id="reviewTripCities">Tokyo → Hakone → Kyoto → Osaka</strong>
+                    </div>
+                    <div class="review-detail-box">
+                      <span class="detail-label"><i data-lucide="tag"></i> Selected Interests</span>
+                      <div class="review-tags" id="reviewTripInterests">
+                        <span class="badge badge-subtle">Food</span>
+                        <span class="badge badge-subtle">Culture</span>
+                        <span class="badge badge-subtle">Nature</span>
+                        <span class="badge badge-subtle">Relaxation</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="wizard-actions">
+                  <button type="button" class="btn btn-outline" id="wizardBack4">
+                    <i data-lucide="arrow-left"></i>
+                    <span>Back</span>
+                  </button>
+                  <div class="actions-right">
+                    <button type="button" class="btn btn-ghost" id="saveDraftBtn">
+                      <i data-lucide="save"></i>
+                      <span>Save as Draft</span>
+                    </button>
+                    <button type="button" class="btn btn-primary btn-lg" id="finalizeTripBtn">
+                      <i data-lucide="sparkles"></i>
+                      <span>Create Trip & Open Itinerary</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Wizard Sidebar Insights / Helper -->
+            <div class="wizard-side-helper">
+              <div class="helper-card">
+                <div class="helper-icon"><i data-lucide="lightbulb"></i></div>
+                <h4>Smart Planner Tip</h4>
+                <p>Allow at least 2 full days per major hub city to prevent travel fatigue. You can drag and swap stops anytime in the Itinerary view.</p>
+              </div>
+
+              <div class="route-preview-mini">
+                <h4>Route Visualization</h4>
+                <div class="mini-timeline-map" id="wizardRouteTimeline">
+                  <div class="timeline-step-point">
+                    <div class="point-dot bg-blue">1</div>
+                    <div class="point-text"><strong>Tokyo</strong><span>3 Days</span></div>
+                  </div>
+                  <div class="timeline-connector"></div>
+                  <div class="timeline-step-point">
+                    <div class="point-dot bg-orange">2</div>
+                    <div class="point-text"><strong>Hakone</strong><span>2 Days</span></div>
+                  </div>
+                  <div class="timeline-connector"></div>
+                  <div class="timeline-step-point">
+                    <div class="point-dot bg-green">3</div>
+                    <div class="point-text"><strong>Kyoto</strong><span>4 Days</span></div>
+                  </div>
+                  <div class="timeline-connector"></div>
+                  <div class="timeline-step-point">
+                    <div class="point-dot bg-purple">4</div>
+                    <div class="point-text"><strong>Osaka</strong><span>3 Days</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ====================================================
+             SCREEN 5 — BUILD ITINERARY
+             ==================================================== -->
+        <section id="screenItinerary" class="screen-view">
+          <!-- Trip Banner Header -->
+          <div class="itinerary-banner-card">
+            <div class="itinerary-banner-left">
+              <div class="trip-badge-row">
+                <span class="badge badge-primary" id="itineraryStatusBadge">UPCOMING</span>
+                <span class="badge badge-subtle" id="itineraryTypeBadge">Couple Trip</span>
+              </div>
+              <h1 class="itinerary-title" id="itineraryTripName">Japan Autumn Odyssey 2026</h1>
+              <div class="itinerary-meta-line">
+                <span><i data-lucide="calendar"></i> <span id="itineraryDates">Oct 10 – Oct 22, 2026</span></span>
+                <span><i data-lucide="map-pin"></i> <span id="itineraryStops">Tokyo · Hakone · Kyoto · Osaka</span></span>
+                <span><i data-lucide="users"></i> <span id="itineraryTravelers">2 Travelers</span></span>
+              </div>
+            </div>
+
+            <div class="itinerary-banner-actions">
+              <button class="btn btn-outline" id="editTripDetailsBtn">
+                <i data-lucide="edit-3"></i>
+                <span>Edit Trip</span>
+              </button>
+              <button class="btn btn-outline" id="shareItineraryBtn" data-nav="community">
+                <i data-lucide="share-2"></i>
+                <span>Share</span>
+              </button>
+              <button class="btn btn-primary" id="addActivityDirectBtn">
+                <i data-lucide="plus"></i>
+                <span>Add Activity</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Quick Navigation Tabs (Itinerary, Budget Link, Calendar Link) -->
+          <div class="itinerary-subnav-bar">
+            <div class="subnav-left">
+              <button class="subnav-tab active" data-subtab="timeline"><i data-lucide="list"></i> Day-by-Day Timeline</button>
+              <button class="subnav-tab" data-nav="budget"><i data-lucide="wallet"></i> Trip Budget & Expenses</button>
+              <button class="subnav-tab" data-nav="calendar"><i data-lucide="calendar"></i> Calendar View</button>
+            </div>
+            <button class="btn btn-ghost btn-sm" id="addNewDayBtn">
+              <i data-lucide="plus-circle"></i>
+              <span>Add Another Day</span>
+            </button>
+          </div>
+
+          <!-- Main Itinerary Layout -->
+          <div class="itinerary-builder-grid">
+            
+            <!-- Left Side: Day selector tabs -->
+            <div class="days-navigator-panel">
+              <div class="days-nav-header">
+                <strong>Days Overview</strong>
+                <span class="badge badge-subtle" id="totalDaysCount">12 Days</span>
+              </div>
+              <div class="days-nav-list" id="itineraryDaysNavList">
+                <!-- Day buttons will be populated by script.js -->
+              </div>
+            </div>
+
+            <!-- Middle: Timeline Activities Column -->
+            <div class="day-activities-panel">
+              <div class="day-header-card">
+                <div>
+                  <span class="day-eyebrow" id="activeDayLabel">DAY 1 — TOKYO</span>
+                  <h2 class="day-title" id="activeDayDate">Monday, October 10</h2>
+                  <p class="day-desc" id="activeDayDesc">Arrival in Shinjuku, local Ramen discovery, and Tokyo Metropolitan Government Building skyline view.</p>
+                </div>
+                <div class="day-header-actions">
+                  <button class="btn btn-primary btn-sm" id="openAddActivityModalBtn">
+                    <i data-lucide="plus"></i>
+                    <span>Add Activity</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Activities List Container -->
+              <div class="activities-timeline" id="activitiesTimeline">
+                <!-- Activity cards dynamically populated by script.js -->
+              </div>
+
+              <!-- Empty state / Add button footer -->
+              <div class="timeline-footer-card" id="timelineFooterAdd">
+                <button type="button" class="btn btn-outline btn-block" id="timelineAddBottomBtn">
+                  <i data-lucide="plus-circle"></i>
+                  <span>Add another activity to this day</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Right Side: Day Summary & Weather Insights -->
+            <div class="day-summary-sidebar">
+              <!-- Day Cost Overview -->
+              <div class="summary-box">
+                <div class="summary-box-header">
+                  <i data-lucide="credit-card"></i>
+                  <strong>Day 1 Estimated Cost</strong>
+                </div>
+                <div class="cost-big-num" id="dayTotalCost">$145</div>
+                <div class="mini-cost-breakdown" id="dayCostBreakdown">
+                  <div class="mini-breakdown-row">
+                    <span><i class="dot bg-blue"></i> Activities</span>
+                    <strong id="dayActivityCost">$65</strong>
+                  </div>
+                  <div class="mini-breakdown-row">
+                    <span><i class="dot bg-orange"></i> Food & Drinks</span>
+                    <strong id="dayFoodCost">$50</strong>
+                  </div>
+                  <div class="mini-breakdown-row">
+                    <span><i class="dot bg-green"></i> Transport</span>
+                    <strong id="dayTransportCost">$30</strong>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Weather / Local Info -->
+              <div class="summary-box">
+                <div class="summary-box-header">
+                  <i data-lucide="cloud-sun"></i>
+                  <strong>Local Conditions</strong>
+                </div>
+                <div class="weather-compact">
+                  <div class="weather-temp">19°C</div>
+                  <div>
+                    <strong>Tokyo, Japan</strong>
+                    <small>Clear skies & crisp autumn breeze</small>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quick City Guide Link -->
+              <div class="summary-box promo-box">
+                <h4>Looking for ideas?</h4>
+                <p>Browse our curated attractions, local ramen stalls, and hidden temples in Tokyo.</p>
+                <button class="btn btn-outline btn-sm btn-block" data-nav="explore">
+                  <i data-lucide="compass"></i>
+                  <span>Explore Tokyo</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ====================================================
+             SCREEN 6 — MY TRIPS
+             ==================================================== -->
+        <section id="screenTrips" class="screen-view">
+          <div class="page-title-banner">
+            <div class="page-title-content">
+              <span class="page-eyebrow"><i data-lucide="briefcase"></i> TRAVEL LIBRARY</span>
+              <h1>My Trips</h1>
+              <p>Manage all your ongoing, upcoming, and completed worldwide adventures in one organized space.</p>
+            </div>
+            <button class="btn btn-primary" data-nav="create">
+              <i data-lucide="plus"></i>
+              <span>Create New Trip</span>
+            </button>
+          </div>
+
+          <!-- Filters & Search Toolbar -->
+          <div class="toolbar-card">
+            <div class="trips-tabs-group" id="myTripsTabGroup">
+              <button class="tab-btn active" data-filter="all">All Trips (<span id="countAllTrips">4</span>)</button>
+              <button class="tab-btn" data-filter="ongoing">Ongoing (<span id="countOngoingTrips">1</span>)</button>
+              <button class="tab-btn" data-filter="upcoming">Upcoming (<span id="countUpcomingTrips">2</span>)</button>
+              <button class="tab-btn" data-filter="completed">Completed (<span id="countCompletedTrips">1</span>)</button>
+            </div>
+
+            <div class="toolbar-actions">
+              <div class="search-field-compact">
+                <i data-lucide="search"></i>
+                <input type="text" id="myTripsSearchInput" placeholder="Search by trip name or city..." />
+              </div>
+
+              <div class="select-sort-wrapper">
+                <select id="myTripsSortSelect">
+                  <option value="date-asc">Sort: Nearest Date</option>
+                  <option value="date-desc">Sort: Latest Date</option>
+                  <option value="name">Sort: Trip Name (A-Z)</option>
+                  <option value="budget">Sort: Budget (High to Low)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trip Cards Grid -->
+          <div class="my-trips-grid" id="myTripsContainer">
+            <!-- Populated dynamically by script.js -->
+          </div>
+        </section>
+
+        <!-- ====================================================
+             SCREEN 7 — USER PROFILE
+             ==================================================== -->
+        <section id="screenProfile" class="screen-view">
+          <!-- Profile Cover & Avatar Header Card -->
+          <div class="profile-hero-card">
+            <div class="profile-cover-bg"></div>
+            <div class="profile-header-content">
+              <div class="profile-avatar-wrapper">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="Alex Rivera" class="profile-avatar-img" id="profileAvatarLarge" />
+                <button class="avatar-edit-icon" id="editAvatarBtn" title="Update avatar"><i data-lucide="camera"></i></button>
+              </div>
+              <div class="profile-text-meta">
+                <div class="profile-name-row">
+                  <h1 id="profileDisplayName">Alex Rivera</h1>
+                  <span class="badge badge-accent"><i data-lucide="shield-check"></i> Verified Explorer</span>
+                </div>
+                <p class="profile-location" id="profileDisplayLocation"><i data-lucide="map-pin"></i> San Francisco, United States · Member since 2024</p>
+                <p class="profile-bio" id="profileDisplayBio">Curator of high-altitude treks, artisan espresso roasters, and slow rail journeys across Europe and East Asia.</p>
+              </div>
+              <div class="profile-actions-col">
+                <button class="btn btn-outline" id="openEditProfileModalBtn">
+                  <i data-lucide="edit-3"></i>
+                  <span>Edit Profile</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Travel Statistics KPIs -->
+          <div class="profile-stats-grid">
+            <div class="profile-stat-box">
+              <div class="stat-icon-circle bg-blue-light"><i data-lucide="globe"></i></div>
+              <div class="stat-meta">
+                <strong id="profCountriesCount">18</strong>
+                <span>Countries Visited</span>
+              </div>
+            </div>
+            <div class="profile-stat-box">
+              <div class="stat-icon-circle bg-green-light"><i data-lucide="map-pin"></i></div>
+              <div class="stat-meta">
+                <strong id="profCitiesCount">42</strong>
+                <span>Cities Explored</span>
+              </div>
+            </div>
+            <div class="profile-stat-box">
+              <div class="stat-icon-circle bg-orange-light"><i data-lucide="check-circle-2"></i></div>
+              <div class="stat-meta">
+                <strong id="profTripsCount">14</strong>
+                <span>Trips Completed</span>
+              </div>
+            </div>
+            <div class="profile-stat-box">
+              <div class="stat-icon-circle bg-purple-light"><i data-lucide="plane"></i></div>
+              <div class="stat-meta">
+                <strong id="profDistanceCount">38,400 km</strong>
+                <span>Total Distance</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Preferred / Saved Trips & Destinations -->
+          <div class="section-block">
+            <div class="section-heading-row">
+              <div>
+                <h3 class="section-title">Favorite & Saved Journeys</h3>
+                <p class="section-desc">Itineraries you've bookmarked or earmarked for upcoming seasons.</p>
+              </div>
+              <button class="btn btn-ghost btn-sm" data-nav="explore">
+                <span>Discover More</span>
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+
+            <div class="destinations-grid" id="profileSavedGrid">
+              <!-- Populated by script.js -->
+            </div>
+          </div>
+
+          <!-- Previous Trips Section -->
+          <div class="section-block">
+            <div class="section-heading-row">
+              <div>
+                <h3 class="section-title">Previous Trips History</h3>
+                <p class="section-desc">Completed travels and archives.</p>
+              </div>
+            </div>
+
+            <div class="trips-showcase-grid" id="profilePastTripsGrid">
+              <!-- Populated by script.js -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ====================================================
+             SCREEN 8 — EXPLORE / CITY SEARCH
+             ==================================================== -->
+        <section id="screenExplore" class="screen-view">
+          <!-- Explore Hero Search Banner -->
+          <div class="explore-hero-card">
+            <div class="explore-hero-content">
+              <span class="badge badge-primary-subtle"><i data-lucide="compass"></i> DESTINATION DISCOVERY</span>
+              <h1>Explore the World</h1>
+              <p>Find inspiration across 140+ countries. Filter by budget, trip duration, preferred activities, and seasons.</p>
+              
+              <!-- Large Search Box -->
+              <div class="explore-search-bar">
+                <i data-lucide="search" class="search-lead-icon"></i>
+                <input type="text" id="exploreSearchInput" placeholder="Search cities, countries, landmarks, or experiences (e.g. Manali, Tokyo, Amalfi Coast)..." />
+                <button class="btn btn-primary btn-search-btn" id="exploreSearchBtn">
+                  <span>Search</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Comprehensive Filter Bar -->
+          <div class="explore-filter-panel">
+            <div class="filter-row">
+              <div class="filter-col">
+                <label><i data-lucide="globe"></i> Region / Country</label>
+                <select id="filterCountrySelect">
+                  <option value="all">All Regions & Countries</option>
+                  <option value="Japan">Japan</option>
+                  <option value="France">France</option>
+                  <option value="Italy">Italy</option>
+                  <option value="India">India</option>
+                  <option value="Indonesia">Indonesia</option>
+                  <option value="UAE">United Arab Emirates</option>
+                  <option value="USA">United States</option>
+                  <option value="UK">United Kingdom</option>
+                  <option value="Thailand">Thailand</option>
+                </select>
+              </div>
+
+              <div class="filter-col">
+                <label><i data-lucide="dollar-sign"></i> Budget Category</label>
+                <select id="filterBudgetSelect">
+                  <option value="all">Any Budget</option>
+                  <option value="budget">Budget ($ - Under $80/day)</option>
+                  <option value="moderate">Moderate ($$ - $80–$200/day)</option>
+                  <option value="luxury">Luxury ($$$ - $200+/day)</option>
+                </select>
+              </div>
+
+              <div class="filter-col">
+                <label><i data-lucide="tag"></i> Activity Style</label>
+                <select id="filterActivitySelect">
+                  <option value="all">All Activities</option>
+                  <option value="Culture">Culture & History</option>
+                  <option value="Food">Food & Night Markets</option>
+                  <option value="Adventure">Adventure & Hiking</option>
+                  <option value="Beaches">Beaches & Coastal</option>
+                  <option value="City">City & Shopping</option>
+                </select>
+              </div>
+
+              <div class="filter-col">
+                <label><i data-lucide="clock"></i> Duration</label>
+                <select id="filterDurationSelect">
+                  <option value="all">Any Duration</option>
+                  <option value="short">Weekend / Short (2–4 Days)</option>
+                  <option value="medium">Standard Trip (5–9 Days)</option>
+                  <option value="long">Extended Journey (10+ Days)</option>
+                </select>
+              </div>
+
+              <div class="filter-actions-col">
+                <button class="btn btn-ghost btn-sm" id="resetExploreFiltersBtn">
+                  <i data-lucide="rotate-ccw"></i>
+                  <span>Reset</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Explore Results Count & Status -->
+          <div class="explore-results-header">
+            <h3 id="exploreResultsTitle">Showing 10 Popular Destinations</h3>
+            <span class="text-muted" id="exploreResultsMeta">Hand-verified travel itineraries & budget averages</span>
+          </div>
+
+          <!-- Destinations Grid -->
+          <div class="explore-cards-grid" id="exploreGridContainer">
+            <!-- Destination cards rendered by script.js -->
+          </div>
+
+          <!-- Empty State (Hidden by default) -->
+          <div id="exploreEmptyState" class="empty-state-card hidden">
+            <div class="empty-icon"><i data-lucide="map-pin-off"></i></div>
+            <h3>No destinations found</h3>
+            <p>We couldn't find any places matching your current search and filters. Try searching for a broader term or reset filters.</p>
+            <button class="btn btn-outline" id="emptyStateResetBtn">Reset All Filters</button>
+          </div>
+        </section>
+
+        <!-- ====================================================
+             SCREEN 9 — ITINERARY + BUDGET
+             ==================================================== -->
+        <section id="screenBudget" class="screen-view">
+          <div class="page-title-banner">
+            <div class="page-title-content">
+              <span class="page-eyebrow"><i data-lucide="wallet"></i> FINANCIAL TRACKER</span>
+              <h1 id="budgetTripTitle">Japan Autumn Odyssey 2026 — Budget Tracker</h1>
+              <p>Keep your travel finances on track. Monitor live estimates against actual receipts and split categories effortlessly.</p>
+            </div>
+            <div class="header-action-group">
+              <button class="btn btn-primary" id="openAddExpenseModalBtn">
+                <i data-lucide="plus"></i>
+                <span>Add Expense</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Budget KPI Cards -->
+          <div class="budget-kpis-grid">
+            <div class="budget-kpi-card">
+              <div class="kpi-label">Estimated Total Budget</div>
+              <div class="kpi-amount" id="budgetTotalEstimate">$3,800.00</div>
+              <div class="kpi-subtext"><i data-lucide="calendar"></i> 12 Days · $316.66 / day</div>
+            </div>
+
+            <div class="budget-kpi-card">
+              <div class="kpi-label">Actual Spent So Far</div>
+              <div class="kpi-amount text-primary" id="budgetActualSpent">$2,410.00</div>
+              <div class="budget-meter-bar">
+                <div class="meter-fill bg-blue" id="budgetSpentProgressBar" style="width: 63.4%;"></div>
+              </div>
+              <div class="kpi-subtext" id="budgetSpentPercentText">63.4% of estimated budget</div>
+            </div>
+
+            <div class="budget-kpi-card">
+              <div class="kpi-label">Remaining Safe Balance</div>
+              <div class="kpi-amount text-success" id="budgetRemainingAmount">$1,390.00</div>
+              <div class="kpi-subtext text-success"><i data-lucide="check-circle-2"></i> On track to stay within budget</div>
+            </div>
+          </div>
+
+          <!-- Split Layout: Left Side Day Expenses & Receipts | Right Side Category Breakdown & Visuals -->
+          <div class="budget-split-layout">
+            
+            <!-- Left Side: Expense Line Items List -->
+            <div class="budget-expenses-column">
+              <div class="card-box">
+                <div class="card-box-header">
+                  <div>
+                    <h3>Expense Ledger</h3>
+                    <p>Itemized travel expenses logged for this journey</p>
+                  </div>
+                  <button class="btn btn-outline btn-sm" id="ledgerAddExpenseBtn">
+                    <i data-lucide="plus"></i>
+                    <span>Log Receipt</span>
+                  </button>
+                </div>
+
+                <div class="expense-table-wrapper">
+                  <table class="expense-ledger-table">
+                    <thead>
+                      <tr>
+                        <th>Expense / Description</th>
+                        <th>Category</th>
+                        <th>Date</th>
+                        <th>Amount</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody id="expenseLedgerBody">
+                      <!-- Rendered dynamically by script.js -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Side: Category Breakdown Summary -->
+            <div class="budget-breakdown-column">
+              <div class="card-box">
+                <div class="card-box-header">
+                  <div>
+                    <h3>Category Allocation</h3>
+                    <p>Visual split across key travel expenses</p>
+                  </div>
+                </div>
+
+                <!-- Category Breakdown Progress Bars -->
+                <div class="category-bars-list" id="categoryBarsContainer">
+                  <!-- Rendered dynamically by script.js -->
+                </div>
+
+                <div class="budget-tip-card">
+                  <i data-lucide="info"></i>
+                  <div>
+                    <strong>Pro Traveler Tip:</strong>
+                    <p>Foreign transaction fees can add 3-5%. Consider logging currency exchange spreads under "Other".</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ====================================================
+             SCREEN 10 — COMMUNITY
+             ==================================================== -->
+        <section id="screenCommunity" class="screen-view">
+          <div class="page-title-banner">
+            <div class="page-title-content">
+              <span class="page-eyebrow"><i data-lucide="users"></i> TRAVEL INSPIRATION</span>
+              <h1>GlobeTrotter Community</h1>
+              <p>Discover battle-tested routes, itineraries, and stories crafted by travelers around the globe.</p>
+            </div>
+            <button class="btn btn-primary" id="openShareTripModalBtn">
+              <i data-lucide="share-2"></i>
+              <span>Share Your Trip</span>
+            </button>
+          </div>
+
+          <!-- Filter & Search Row -->
+          <div class="toolbar-card">
+            <div class="trips-tabs-group" id="communityFilterGroup">
+              <button class="tab-btn active" data-tag="all">All Stories</button>
+              <button class="tab-btn" data-tag="Featured">Featured ✦</button>
+              <button class="tab-btn" data-tag="Solo">Solo Travel</button>
+              <button class="tab-btn" data-tag="Roadtrip">Roadtrips</button>
+              <button class="tab-btn" data-tag="Foodie">Foodie Trails</button>
+            </div>
+
+            <div class="toolbar-actions">
+              <div class="search-field-compact">
+                <i data-lucide="search"></i>
+                <input type="text" id="communitySearchInput" placeholder="Search community itineraries..." />
+              </div>
+            </div>
+          </div>
+
+          <!-- Community Cards Grid -->
+          <div class="community-trips-grid" id="communityGridContainer">
+            <!-- Populated dynamically by script.js -->
+          </div>
+        </section>
+
+        <!-- ====================================================
+             SCREEN 11 — CALENDAR
+             ==================================================== -->
+        <section id="screenCalendar" class="screen-view">
+          <div class="page-title-banner">
+            <div class="page-title-content">
+              <span class="page-eyebrow"><i data-lucide="calendar"></i> SCHEDULE & TIMELINE</span>
+              <h1>Trip Calendar</h1>
+              <p>View your multi-day schedules, flights, and activities organized on a clean monthly canvas.</p>
+            </div>
+            <div class="calendar-view-toggle">
+              <button class="toggle-btn active" id="calendarViewMonthBtn"><i data-lucide="calendar"></i> Month</button>
+              <button class="toggle-btn" id="calendarViewListBtn"><i data-lucide="list"></i> Agenda List</button>
+            </div>
+          </div>
+
+          <!-- Calendar Navigator Card -->
+          <div class="calendar-layout-card">
+            <div class="calendar-header-toolbar">
+              <div class="cal-nav-left">
+                <button class="btn btn-outline btn-sm" id="calPrevMonthBtn"><i data-lucide="chevron-left"></i></button>
+                <h2 id="calendarMonthTitle">October 2026</h2>
+                <button class="btn btn-outline btn-sm" id="calNextMonthBtn"><i data-lucide="chevron-right"></i></button>
+                <button class="btn btn-ghost btn-sm" id="calTodayBtn">Today</button>
+              </div>
+
+              <div class="cal-trip-legend">
+                <span class="legend-item"><i class="dot bg-blue"></i> Japan Autumn Odyssey</span>
+                <span class="legend-item"><i class="dot bg-orange"></i> Weekend in Manali</span>
+                <span class="legend-item"><i class="dot bg-green"></i> European Summer</span>
+              </div>
+            </div>
+
+            <!-- Month Grid View -->
+            <div id="calendarMonthView" class="calendar-grid-view">
+              <div class="cal-weekdays-row">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+              </div>
+              <div class="cal-days-grid" id="calendarDaysGrid">
+                <!-- Rendered dynamically by script.js -->
+              </div>
+            </div>
+
+            <!-- Optional Agenda List View (Toggled) -->
+            <div id="calendarAgendaView" class="calendar-agenda-view hidden">
+              <div class="agenda-items-list" id="agendaItemsContainer">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Selected Day Detail Drawer / Card -->
+          <div class="selected-day-schedule-card" id="calendarDayDetailBox">
+            <div class="cal-detail-header">
+              <div>
+                <span class="badge badge-primary-subtle" id="calSelectedDayBadge">OCTOBER 12, 2026</span>
+                <h3 id="calSelectedDayTitle">Day 3 Schedule — Tokyo to Hakone</h3>
+              </div>
+              <button class="btn btn-primary btn-sm" data-nav="itinerary">
+                <span>Open in Itinerary Builder</span>
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+
+            <div class="cal-day-activities-row" id="calSelectedDayActivities">
+              <!-- Dynamically populated activities for the day -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ====================================================
+             SCREEN 12 — ANALYTICS / ADMIN STYLE PAGE
+             ==================================================== -->
+        <section id="screenAnalytics" class="screen-view">
+          <div class="page-title-banner">
+            <div class="page-title-content">
+              <span class="page-eyebrow"><i data-lucide="bar-chart-3"></i> TRAVEL INTELLIGENCE</span>
+              <h1>Travel Analytics & Insights</h1>
+              <p>Explore high-level metrics, lifetime expense charts, country milestones, and trip velocity.</p>
+            </div>
+            <button class="btn btn-outline" id="exportAnalyticsBtn">
+              <i data-lucide="download"></i>
+              <span>Export PDF Report</span>
+            </button>
+          </div>
+
+          <!-- 4 KPI Summary Cards -->
+          <div class="analytics-kpi-grid">
+            <div class="analytics-stat-card">
+              <div class="stat-top">
+                <span class="stat-title">Total Trips Logged</span>
+                <div class="stat-icon-badge bg-blue-light"><i data-lucide="map"></i></div>
+              </div>
+              <div class="stat-number">14</div>
+              <div class="stat-trend text-success"><i data-lucide="trending-up"></i> +3 this calendar year</div>
+            </div>
+
+            <div class="analytics-stat-card">
+              <div class="stat-top">
+                <span class="stat-title">Total Travel Days</span>
+                <div class="stat-icon-badge bg-green-light"><i data-lucide="calendar"></i></div>
+              </div>
+              <div class="stat-number">84 Days</div>
+              <div class="stat-trend text-success"><i data-lucide="trending-up"></i> ~23% of the year on adventure</div>
+            </div>
+
+            <div class="analytics-stat-card">
+              <div class="stat-top">
+                <span class="stat-title">Total Expenses Logged</span>
+                <div class="stat-icon-badge bg-orange-light"><i data-lucide="dollar-sign"></i></div>
+              </div>
+              <div class="stat-number">$18,450</div>
+              <div class="stat-trend text-muted"><i data-lucide="pie-chart"></i> Avg $219 / day</div>
+            </div>
+
+            <div class="analytics-stat-card">
+              <div class="stat-top">
+                <span class="stat-title">Favorite Destination</span>
+                <div class="stat-icon-badge bg-purple-light"><i data-lucide="heart"></i></div>
+              </div>
+              <div class="stat-number">Kyoto, Japan</div>
+              <div class="stat-trend text-primary"><i data-lucide="repeat"></i> 3 Visits · 94/100 Rating</div>
+            </div>
+          </div>
+
+          <!-- Charts Section: Spending Breakdown & Monthly Travel Days -->
+          <div class="analytics-charts-grid">
+            
+            <!-- Left Chart: SVG Donut Chart for Lifetime Spending -->
+            <div class="card-box chart-card-box">
+              <div class="card-box-header">
+                <div>
+                  <h3>Spending by Category</h3>
+                  <p>Distribution of total travel expenditure</p>
+                </div>
+                <span class="badge badge-subtle">Lifetime Data</span>
+              </div>
+
+              <div class="donut-chart-container">
+                <svg class="analytics-donut-svg" viewBox="0 0 200 200">
+                  <circle cx="100" cy="100" r="70" class="donut-bg-ring" />
+                  <!-- Transport 35% -->
+                  <circle cx="100" cy="100" r="70" class="donut-slice slice-transport" stroke-dasharray="153.9 439.8" stroke-dashoffset="0" />
+                  <!-- Accommodation 30% -->
+                  <circle cx="100" cy="100" r="70" class="donut-slice slice-stay" stroke-dasharray="131.9 439.8" stroke-dashoffset="-153.9" />
+                  <!-- Food 18% -->
+                  <circle cx="100" cy="100" r="70" class="donut-slice slice-food" stroke-dasharray="79.1 439.8" stroke-dashoffset="-285.8" />
+                  <!-- Activities 12% -->
+                  <circle cx="100" cy="100" r="70" class="donut-slice slice-activities" stroke-dasharray="52.7 439.8" stroke-dashoffset="-364.9" />
+                  <!-- Other 5% -->
+                  <circle cx="100" cy="100" r="70" class="donut-slice slice-other" stroke-dasharray="22.2 439.8" stroke-dashoffset="-417.6" />
+                </svg>
+                <div class="donut-center-text">
+                  <strong>$18,450</strong>
+                  <small>Total Spend</small>
+                </div>
+              </div>
+
+              <div class="donut-legend-grid">
+                <div class="legend-chip"><i class="dot bg-transport"></i> <span>Transport (35%)</span> <strong>$6,457</strong></div>
+                <div class="legend-chip"><i class="dot bg-stay"></i> <span>Accommodation (30%)</span> <strong>$5,535</strong></div>
+                <div class="legend-chip"><i class="dot bg-food"></i> <span>Food & Drinks (18%)</span> <strong>$3,321</strong></div>
+                <div class="legend-chip"><i class="dot bg-activities"></i> <span>Activities (12%)</span> <strong>$2,214</strong></div>
+                <div class="legend-chip"><i class="dot bg-other"></i> <span>Other (5%)</span> <strong>$923</strong></div>
+              </div>
+            </div>
+
+            <!-- Right Chart: Monthly Travel Activity Bar Chart (CSS/SVG) -->
+            <div class="card-box chart-card-box">
+              <div class="card-box-header">
+                <div>
+                  <h3>2026 Travel Velocity</h3>
+                  <p>Days on road per month</p>
+                </div>
+                <span class="badge badge-accent">Active Year</span>
+              </div>
+
+              <div class="bar-chart-container">
+                <div class="bar-col"><div class="bar-fill" style="height: 15%;"><span class="bar-tooltip">2 Days</span></div><label>Jan</label></div>
+                <div class="bar-col"><div class="bar-fill" style="height: 0%;"><span class="bar-tooltip">0 Days</span></div><label>Feb</label></div>
+                <div class="bar-col"><div class="bar-fill" style="height: 40%;"><span class="bar-tooltip">6 Days</span></div><label>Mar</label></div>
+                <div class="bar-col"><div class="bar-fill active" style="height: 85%;"><span class="bar-tooltip">14 Days (Japan)</span></div><label>Apr</label></div>
+                <div class="bar-col"><div class="bar-fill" style="height: 25%;"><span class="bar-tooltip">4 Days</span></div><label>May</label></div>
+                <div class="bar-col"><div class="bar-fill" style="height: 60%;"><span class="bar-tooltip">9 Days</span></div><label>Jun</label></div>
+                <div class="bar-col"><div class="bar-fill" style="height: 70%;"><span class="bar-tooltip">11 Days</span></div><label>Jul</label></div>
+                <div class="bar-col"><div class="bar-fill" style="height: 30%;"><span class="bar-tooltip">5 Days</span></div><label>Aug</label></div>
+                <div class="bar-col"><div class="bar-fill" style="height: 20%;"><span class="bar-tooltip">3 Days</span></div><label>Sep</label></div>
+                <div class="bar-col"><div class="bar-fill active" style="height: 90%;"><span class="bar-tooltip">15 Days (Autumn)</span></div><label>Oct</label></div>
+                <div class="bar-col"><div class="bar-fill" style="height: 45%;"><span class="bar-tooltip">7 Days</span></div><label>Nov</label></div>
+                <div class="bar-col"><div class="bar-fill" style="height: 55%;"><span class="bar-tooltip">8 Days</span></div><label>Dec</label></div>
+              </div>
+
+              <!-- Recent Activity Stream -->
+              <div class="recent-stream-section">
+                <h4>Recent Travel Activity Log</h4>
+                <div class="stream-item">
+                  <i data-lucide="check-circle" class="text-success"></i>
+                  <div>
+                    <strong>Completed Day 1 & 2 Tokyo Itinerary</strong>
+                    <small>Logged 6 new activities and pinned 3 ramen spots</small>
+                  </div>
+                  <span class="stream-time">Yesterday</span>
+                </div>
+                <div class="stream-item">
+                  <i data-lucide="wallet" class="text-primary"></i>
+                  <div>
+                    <strong>Logged Shinkansen Bullet Train Passes</strong>
+                    <small>Amount: $340.00 · Category: Transport</small>
+                  </div>
+                  <span class="stream-time">3 days ago</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ====================================================
+             SETTINGS SCREEN
+             ==================================================== -->
+        <section id="screenSettings" class="screen-view">
+          <div class="page-title-banner">
+            <div class="page-title-content">
+              <span class="page-eyebrow"><i data-lucide="settings"></i> PREFERENCES</span>
+              <h1>Application Settings</h1>
+              <p>Customize notifications, base currency, measurement units, and security.</p>
+            </div>
+            <button class="btn btn-primary" id="saveSettingsBtn">
+              <i data-lucide="save"></i>
+              <span>Save Preferences</span>
+            </button>
+          </div>
+
+          <div class="settings-layout-grid">
+            <div class="card-box">
+              <div class="card-box-header">
+                <div>
+                  <h3>General Preferences</h3>
+                  <p>Localization and display defaults</p>
+                </div>
+              </div>
+
+              <div class="form-standard">
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label>Base Currency</label>
+                    <select id="settingCurrency">
+                      <option value="USD">USD ($) - US Dollar</option>
+                      <option value="EUR">EUR (€) - Euro</option>
+                      <option value="INR">INR (₹) - Indian Rupee</option>
+                      <option value="GBP">GBP (£) - British Pound</option>
+                      <option value="JPY">JPY (¥) - Japanese Yen</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Distance Units</label>
+                    <select id="settingDistance">
+                      <option value="km">Kilometers (km)</option>
+                      <option value="mi">Miles (mi)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Date Format</label>
+                  <select id="settingDateFormat">
+                    <option value="DD/MM/YYYY">DD/MM/YYYY (e.g. 10/10/2026)</option>
+                    <option value="MM/DD/YYYY">MM/DD/YYYY (e.g. 10/10/2026)</option>
+                    <option value="MMM D, YYYY">MMM D, YYYY (e.g. Oct 10, 2026)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-box">
+              <div class="card-box-header">
+                <div>
+                  <h3>Account Controls & Data</h3>
+                  <p>Manage your login session or reset local test state</p>
+                </div>
+              </div>
+
+              <div class="settings-actions-list">
+                <div class="settings-action-row">
+                  <div>
+                    <strong>Sign Out of Session</strong>
+                    <p>Return to login and authentication screen</p>
+                  </div>
+                  <button class="btn btn-outline btn-sm" id="settingsSignOutBtn">Sign Out</button>
+                </div>
+                <div class="settings-action-row">
+                  <div>
+                    <strong>Reset Demo Data</strong>
+                    <p>Restore default sample trips, activities, and budget items</p>
+                  </div>
+                  <button class="btn btn-ghost btn-sm text-danger" id="resetDemoDataBtn">Reset Demo State</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- ====================================================
+       MODALS
+       ==================================================== -->
+
+  <!-- Modal 1: Add/Edit Activity Modal -->
+  <div id="activityModal" class="modal-backdrop hidden">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <h3 id="activityModalTitle">Add Activity</h3>
+          <p id="activityModalSub">Schedule a sight, meal, transport, or leisure event.</p>
+        </div>
+        <button class="modal-close-btn" id="closeActivityModalBtn">&times;</button>
+      </div>
+      <form id="activityForm" class="modal-body form-standard">
+        <input type="hidden" id="editActivityId" value="" />
+        
+        <div class="form-group">
+          <label for="actDaySelect">Target Day</label>
+          <select id="actDaySelect">
+            <option value="1">Day 1: Tokyo Arrival</option>
+            <option value="2">Day 2: Asakusa & Akihabara</option>
+            <option value="3">Day 3: Hakone Hot Springs</option>
+            <option value="4">Day 4: Kyoto Arashiyama</option>
+          </select>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label for="actTime">Start Time</label>
+            <input type="time" id="actTime" value="09:30" required />
+          </div>
+          <div class="form-group">
+            <label for="actDuration">Duration</label>
+            <input type="text" id="actDuration" placeholder="e.g. 2 hrs" value="2 hrs" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="actTitle">Activity Title <span class="required">*</span></label>
+          <input type="text" id="actTitle" placeholder="e.g. Visit Meiji Jingu Shrine" required />
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label for="actLocation">Location / Address</label>
+            <input type="text" id="actLocation" placeholder="e.g. 1-1 Yoyogikamizonocho, Shibuya" required />
+          </div>
+          <div class="form-group">
+            <label for="actCategory">Category</label>
+            <select id="actCategory">
+              <option value="Sightseeing">Sightseeing & Culture</option>
+              <option value="Food">Food & Drink</option>
+              <option value="Transport">Transit & Flight</option>
+              <option value="Stay">Hotel / Stay</option>
+              <option value="Activity">Active & Adventure</option>
+              <option value="Shopping">Shopping & Market</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label for="actCost">Estimated Cost ($)</label>
+            <input type="number" id="actCost" min="0" step="1" value="25" />
+          </div>
+          <div class="form-group">
+            <label for="actImage">Cover Image URL (Optional)</label>
+            <input type="url" id="actImage" placeholder="https://..." value="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=400&q=80" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="actNotes">Notes & Tips</label>
+          <textarea id="actNotes" rows="2" placeholder="e.g. Pre-booked tickets, recommended matcha tea stand next door..."></textarea>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" id="cancelActivityBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="saveActivityBtn">Save Activity</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 2: Add Expense Modal -->
+  <div id="expenseModal" class="modal-backdrop hidden">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <h3>Log New Expense</h3>
+          <p>Add receipts, flight tickets, dining tabs, or transport costs.</p>
+        </div>
+        <button class="modal-close-btn" id="closeExpenseModalBtn">&times;</button>
+      </div>
+      <form id="expenseForm" class="modal-body form-standard">
+        <div class="form-group">
+          <label for="expName">Expense Name <span class="required">*</span></label>
+          <input type="text" id="expName" placeholder="e.g. Bullet Train Passes (Tokyo to Kyoto)" required />
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label for="expCategory">Category</label>
+            <select id="expCategory">
+              <option value="Transport">Transport</option>
+              <option value="Accommodation">Accommodation / Stay</option>
+              <option value="Food">Food & Drinks</option>
+              <option value="Activities">Activities & Tours</option>
+              <option value="Shopping">Shopping</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="expAmount">Amount ($) <span class="required">*</span></label>
+            <input type="number" id="expAmount" min="0" step="0.01" placeholder="120.00" required />
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label for="expDate">Date Logged</label>
+            <input type="date" id="expDate" value="2026-10-12" required />
+          </div>
+          <div class="form-group">
+            <label for="expPaymentMethod">Payment Method</label>
+            <select id="expPaymentMethod">
+              <option value="Credit Card">Credit Card</option>
+              <option value="Cash / Local FX">Cash / Local FX</option>
+              <option value="Apple Pay / Mobile">Apple Pay / Mobile</option>
+              <option value="Splitwise / Shared">Splitwise / Shared</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="expNotes">Notes / Receipt Ref</label>
+          <textarea id="expNotes" rows="2" placeholder="e.g. Booked via JR East Official Portal"></textarea>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" id="cancelExpenseBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Add Expense</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 3: Share Trip to Community Modal -->
+  <div id="shareTripModal" class="modal-backdrop hidden">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <h3>Share Trip with Community</h3>
+          <p>Inspire fellow travelers by publishing your itinerary to the feed.</p>
+        </div>
+        <button class="modal-close-btn" id="closeShareModalBtn">&times;</button>
+      </div>
+      <form id="shareTripForm" class="modal-body form-standard">
+        <div class="form-group">
+          <label for="shareSelectTrip">Select Trip to Share</label>
+          <select id="shareSelectTrip">
+            <option value="1">Japan Autumn Odyssey 2026 (Tokyo · Hakone · Kyoto)</option>
+            <option value="2">Weekend in Manali (Solang · Rohtang)</option>
+            <option value="3">European Summer Escape (Paris · Amsterdam · Rome)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="shareStoryTitle">Community Title</label>
+          <input type="text" id="shareStoryTitle" placeholder="e.g. 12 Days in Japan: Fall Foliage, Onsens & Ramen" required />
+        </div>
+
+        <div class="form-group">
+          <label for="shareDescription">Trip Story / Highlights</label>
+          <textarea id="shareDescription" rows="3" placeholder="Share your favorite moments, key warnings, or recommended eats..." required></textarea>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label for="shareVibeTag">Main Vibe Tag</label>
+            <select id="shareVibeTag">
+              <option value="Featured">Featured</option>
+              <option value="Solo">Solo Explorer</option>
+              <option value="Roadtrip">Scenic Roadtrip</option>
+              <option value="Foodie">Food & Nightlife</option>
+              <option value="Couple">Romantic Getaway</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="shareCoverUrl">Cover Image URL</label>
+            <input type="url" id="shareCoverUrl" value="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=800&q=80" required />
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" id="cancelShareBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Publish to Community</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 4: Edit Profile Modal -->
+  <div id="editProfileModal" class="modal-backdrop hidden">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <h3>Edit Profile Information</h3>
+          <p>Update your public traveler persona and bio.</p>
+        </div>
+        <button class="modal-close-btn" id="closeEditProfileBtn">&times;</button>
+      </div>
+      <form id="editProfileForm" class="modal-body form-standard">
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label for="editProfName">Display Name</label>
+            <input type="text" id="editProfName" value="Alex Rivera" required />
+          </div>
+          <div class="form-group">
+            <label for="editProfLocation">Location</label>
+            <input type="text" id="editProfLocation" value="San Francisco, United States" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="editProfBio">Bio</label>
+          <textarea id="editProfBio" rows="3" required>Curator of high-altitude treks, artisan espresso roasters, and slow rail journeys across Europe and East Asia.</textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="editProfAvatar">Avatar Image URL</label>
+          <input type="url" id="editProfAvatar" value="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" required />
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" id="cancelEditProfileBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 5: Destination Quick View / Add to Trip Modal -->
+  <div id="destinationQuickModal" class="modal-backdrop hidden">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-header">
+        <div>
+          <h3 id="quickModalCityName">Tokyo, Japan</h3>
+          <p id="quickModalCountry">Asia · 5-7 Days recommended</p>
+        </div>
+        <button class="modal-close-btn" id="closeQuickModalBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="quick-modal-image-box">
+          <img id="quickModalImage" src="" alt="Destination" />
+          <div class="quick-modal-budget-tag" id="quickModalBudget">~$140 / day</div>
+        </div>
+        <p class="quick-modal-desc" id="quickModalDesc"></p>
+
+        <div class="quick-modal-attractions">
+          <strong>Top Sights & Experiences:</strong>
+          <div class="attractions-chips" id="quickModalAttractions"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" id="quickModalCloseBtn">Close</button>
+        <button type="button" class="btn btn-primary" id="quickModalAddToTripBtn">
+          <i data-lucide="plus"></i>
+          <span>Add to Active Trip</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script logic -->
+  <script src="script.js"></script>
+</body>
+</html>
+
